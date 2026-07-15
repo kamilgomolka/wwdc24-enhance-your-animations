@@ -1,0 +1,26 @@
+---
+description: Architecture and code style conventions for this UIKit demo boilerplate
+alwaysApply: true
+---
+
+# Project context
+
+This repo is a reusable boilerplate for iOS demos/portfolio pieces. It gets copy-pasted per demo and renamed — keep it generic, minimal, and dependency-free unless the specific demo requires otherwise.
+
+Target: iOS 26.0, Swift 6.0 (strict concurrency mode). Deployment target lives in `project.pbxproj` under `IPHONEOS_DEPLOYMENT_TARGET` — check it before assuming a different one.
+
+# Architecture
+
+- Plain UIKit, fully programmatic UI. No Storyboards/XIBs for view controllers — only `LaunchScreen.storyboard` stays as a storyboard, and no Interface Builder Auto Layout.
+- One `UIViewController` subclass per feature under `Source/Features/`. `MainViewController` is the app entry point, pushed from `SceneDelegate` inside a `UINavigationController`.
+- No third-party dependencies (no CocoaPods/SPM packages) unless the specific demo requires one — state the reason before adding one.
+- Before scaffolding a new feature, name the architecture pattern being used (MVC/MVVM/coordinator/etc.). Most demos exist to showcase a specific pattern, not just deliver a feature — ask if it's unstated.
+
+# Code style — match existing files
+
+- View controller `MARK` order: `Properties` → `ViewController Lifecycle` → `View setup` → `Factories` → `Actions` → `Private functions`. Omit sections that aren't used; don't invent new section names.
+- UI elements are `private` stored properties built with a trailing closure (`{ ... }()`); always set `translatesAutoresizingMaskIntoConstraints = false` inside the closure.
+- Constraints: individual `someAnchor.constraint(...).isActive = true` calls grouped in a dedicated `createConstraints()`/`setup<Name>()` method — not `NSLayoutConstraint.activate([...])`. Stay consistent with whichever style the file already uses.
+- Buttons: `UIButton.Configuration` + `UIAction`, not target-action or `UIButton(type:)`.
+- Colors: semantic system colors (`.systemBackground`, `.label`, etc.), never hardcoded hex/RGB.
+- No force unwraps/casts, no singletons for new shared state, no stringly-typed identifiers (segue/reuse identifiers, notification names as raw strings) — this is a from-scratch UIKit app, so these patterns shouldn't creep in through copy-paste.

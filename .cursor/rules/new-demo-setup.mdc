@@ -1,0 +1,17 @@
+---
+description: Checklist for adapting this boilerplate into a new demo project
+alwaysApply: true
+---
+
+# New demo checklist
+
+When the user says they've copy-pasted this repo (or the current folder) to start a new demo, proactively help rename/update, don't assume it's already done:
+
+- Xcode project/target/scheme name and `PRODUCT_NAME` (currently `NewAppBoilerplateUIKit`)
+- `PRODUCT_BUNDLE_IDENTIFIER` (currently `com.kamilgomolka.testapp1`) to a demo-specific identifier
+- Root folder name and `.xcodeproj` filename to match the new demo
+- `MainViewController.title` ("Boilerplate app") to the demo's name
+- `TestFeatureViewController` and its "Launch Test Feature" button — this is a placeholder to delete/replace once the real feature exists, not a pattern to preserve
+- `LICENSE`/`README` if they mention the boilerplate name specifically
+
+Renaming the Xcode project itself (target, scheme, `.xcodeproj`) isn't a plain text edit — treat it as a project-structure operation and flag if it needs to be done manually in Xcode rather than silently editing `project.pbxproj` by hand.
