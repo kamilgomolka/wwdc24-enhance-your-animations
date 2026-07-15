@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		8EC3CDA63007E6B600D09B94 /* NewAppBoilerplateUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewAppBoilerplateUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC24-EnahanceYourAnimations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "NewAppBoilerplateUIKit" target */ = {
+		8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 8EC3CDA53007E6B600D09B94 /* NewAppBoilerplateUIKit */;
+			target = 8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -29,7 +29,7 @@
 		8EC3CDC03007E90C00D09B94 /* Supporting files */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "NewAppBoilerplateUIKit" target */,
+				8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -59,7 +59,7 @@
 		8EC3CDA73007E6B600D09B94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EC3CDA63007E6B600D09B94 /* NewAppBoilerplateUIKit.app */,
+				8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EC3CDA53007E6B600D09B94 /* NewAppBoilerplateUIKit */ = {
+		8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "NewAppBoilerplateUIKit" */;
+			buildConfigurationList = 8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "WWDC24-EnahanceYourAnimations" */;
 			buildPhases = (
 				8EC3CDA23007E6B600D09B94 /* Sources */,
 				8EC3CDA33007E6B600D09B94 /* Frameworks */,
@@ -83,11 +83,11 @@
 				8EC3CDA83007E6B600D09B94 /* Source */,
 				8EC3CDC03007E90C00D09B94 /* Supporting files */,
 			);
-			name = NewAppBoilerplateUIKit;
+			name = "WWDC24-EnahanceYourAnimations";
 			packageProductDependencies = (
 			);
 			productName = NewAppBoilerplateUIKit;
-			productReference = 8EC3CDA63007E6B600D09B94 /* NewAppBoilerplateUIKit.app */;
+			productReference = 8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "NewAppBoilerplateUIKit" */;
+			buildConfigurationList = 8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "WWDC24-EnahanceYourAnimations" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -119,7 +119,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EC3CDA53007E6B600D09B94 /* NewAppBoilerplateUIKit */,
+				8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +155,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Enhance your animations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -188,6 +189,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Supporting files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Enhance your animations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -335,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "NewAppBoilerplateUIKit" */ = {
+		8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "WWDC24-EnahanceYourAnimations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EC3CDBC3007E6B700D09B94 /* Debug */,
@@ -344,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "NewAppBoilerplateUIKit" */ = {
+		8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "WWDC24-EnahanceYourAnimations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EC3CDBA3007E6B700D09B94 /* Debug */,
