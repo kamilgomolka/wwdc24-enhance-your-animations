@@ -38,9 +38,9 @@ final class BeadThreadingViewController: UIViewController {
         return label
     }()
 
-    /// Max distance, in points, from the string within which a dragged bead reserves an
-    /// insertion slot.
-    private static let insertionProximityThreshold: CGFloat = 20
+    /// Max vertical distance, in points, from `stringView.bounds.midY` within which a dragged
+    /// bead reserves an insertion slot.
+    private static let insertionProximityThreshold: CGFloat = 30
 
     // MARK: ViewController Lifecycle
 
@@ -156,7 +156,7 @@ final class BeadThreadingViewController: UIViewController {
 
     private func isNearString(_ locationInRoot: CGPoint) -> Bool {
         let locationInString = stringView.convert(locationInRoot, from: view)
-        return stringView.distance(toStringFrom: locationInString) <= Self.insertionProximityThreshold
+        return abs(locationInString.y - stringView.bounds.midY) <= Self.insertionProximityThreshold
     }
 
     private func endDrag() {

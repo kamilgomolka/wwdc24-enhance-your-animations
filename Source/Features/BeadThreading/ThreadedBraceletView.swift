@@ -80,16 +80,6 @@ final class ThreadedBraceletView: UIView {
         layoutBeads()
     }
 
-    /// Shortest distance from `point` (in this view's coordinate space) to the currently
-    /// rendered string polyline, used to decide whether a dragged bead is close enough to
-    /// reserve an insertion slot.
-    func distance(toStringFrom point: CGPoint) -> CGFloat {
-        guard currentStringPolyline.count > 1 else { return .greatestFiniteMagnitude }
-        return zip(currentStringPolyline, currentStringPolyline.dropFirst())
-            .map { distance(from: point, toSegmentBetween: $0, and: $1) }
-            .min() ?? .greatestFiniteMagnitude
-    }
-
     // MARK: Layout
 
     override func layoutSubviews() {
@@ -148,19 +138,5 @@ final class ThreadedBraceletView: UIView {
 
     private func point(from origin: CGPoint, angle: CGFloat, length: CGFloat) -> CGPoint {
         CGPoint(x: origin.x + cos(angle) * length, y: origin.y + sin(angle) * length)
-    }
-
-    private func distance(from point: CGPoint, toSegmentBetween a: CGPoint, and b: CGPoint) -> CGFloat {
-        let deltaX = b.x - a.x
-        let deltaY = b.y - a.y
-        let lengthSquared = deltaX * deltaX + deltaY * deltaY
-
-        guard lengthSquared > 0 else {
-            return hypot(point.x - a.x, point.y - a.y)
-        }
-
-        let t = max(0, min(1, ((point.x - a.x) * deltaX + (point.y - a.y) * deltaY) / lengthSquared))
-        let projection = CGPoint(x: a.x + t * deltaX, y: a.y + t * deltaY)
-        return hypot(point.x - projection.x, point.y - projection.y)
     }
 }
