@@ -18,6 +18,14 @@ bracelets and beads.
 
 All APIs require iOS 18 or later.
 
+## Screenshots / Recordings
+
+<img width="434" height="908" alt="Screenshot 2026-07-16 at 14 45 14" src="https://github.com/user-attachments/assets/4b685879-9e75-46d7-8974-57f44d1f10bb" />
+
+https://github.com/user-attachments/assets/399831a4-96c2-41ac-b014-b1671271ee26
+
+https://github.com/user-attachments/assets/04d655ce-d150-4da9-8bab-ae39a9ea9c66
+
 ## Architecture
 
 - Plain, programmatic UIKit (no Storyboards/XIBs except `LaunchScreen.storyboard`). One `UIViewController`
