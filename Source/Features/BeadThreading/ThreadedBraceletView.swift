@@ -9,6 +9,7 @@ final class ThreadedBraceletView: UIView {
     private(set) var beads: [BraceletBead] = []
     private var beadViews: [BeadView] = []
     private var showsInsertionSlot = false
+    private var currentStringPolyline: [CGPoint] = []
 
     private let stringLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
@@ -79,6 +80,16 @@ final class ThreadedBraceletView: UIView {
         layoutBeads()
     }
 
+    /// Shortest distance from `point` (in this view's coordinate space) to the currently
+    /// rendered string polyline, used to decide whether a dragged bead is close enough to
+    /// reserve an insertion slot.
+    func distance(toStringFrom point: CGPoint) -> CGFloat {
+        guard currentStringPolyline.count > 1 else { return .greatestFiniteMagnitude }
+        return zip(currentStringPolyline, currentStringPolyline.dropFirst())
+            .map { distance(from: point, toSegmentBetween: $0, and: $1) }
+            .min() ?? .greatestFiniteMagnitude
+    }
+
     // MARK: Layout
 
     override func layoutSubviews() {
@@ -95,8 +106,9 @@ final class ThreadedBraceletView: UIView {
             beadView.center = center
         }
 
+        currentStringPolyline = polylinePoints(through: centers)
         stringLayer.frame = bounds
-        stringLayer.path = stringPath(through: centers).cgPath
+        stringLayer.path = stringPath(through: currentStringPolyline).cgPath
     }
 
     private func slotCenters(count: Int) -> [CGPoint] {
@@ -114,24 +126,41 @@ final class ThreadedBraceletView: UIView {
         }
     }
 
-    private func stringPath(through centers: [CGPoint]) -> UIBezierPath {
-        guard let first = centers.first, let last = centers.last else {
-            return UIBezierPath()
-        }
+    private func polylinePoints(through centers: [CGPoint]) -> [CGPoint] {
+        guard let first = centers.first, let last = centers.last else { return [] }
 
         let tailLength = beadDiameter * 0.9
         let tailStart = point(from: first, angle: .pi * 0.83, length: tailLength)
         let tailEnd = point(from: last, angle: .pi * 0.17, length: tailLength)
+        return [tailStart] + centers + [tailEnd]
+    }
+
+    private func stringPath(through polyline: [CGPoint]) -> UIBezierPath {
+        guard let first = polyline.first else { return UIBezierPath() }
 
         let path = UIBezierPath()
-        path.move(to: tailStart)
-        for center in centers + [tailEnd] {
-            path.addLine(to: center)
+        path.move(to: first)
+        for point in polyline.dropFirst() {
+            path.addLine(to: point)
         }
         return path
     }
 
     private func point(from origin: CGPoint, angle: CGFloat, length: CGFloat) -> CGPoint {
         CGPoint(x: origin.x + cos(angle) * length, y: origin.y + sin(angle) * length)
+    }
+
+    private func distance(from point: CGPoint, toSegmentBetween a: CGPoint, and b: CGPoint) -> CGFloat {
+        let deltaX = b.x - a.x
+        let deltaY = b.y - a.y
+        let lengthSquared = deltaX * deltaX + deltaY * deltaY
+
+        guard lengthSquared > 0 else {
+            return hypot(point.x - a.x, point.y - a.y)
+        }
+
+        let t = max(0, min(1, ((point.x - a.x) * deltaX + (point.y - a.y) * deltaY) / lengthSquared))
+        let projection = CGPoint(x: a.x + t * deltaX, y: a.y + t * deltaY)
+        return hypot(point.x - projection.x, point.y - projection.y)
     }
 }

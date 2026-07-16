@@ -38,11 +38,9 @@ final class BeadThreadingViewController: UIViewController {
         return label
     }()
 
-    /// Generous hit-test area around the string used to decide when a dragged bead is "close
-    /// enough" to reserve an insertion slot.
-    private var insertionProximityRect: CGRect {
-        stringView.frame.insetBy(dx: -40, dy: -60)
-    }
+    /// Max distance, in points, from the string within which a dragged bead reserves an
+    /// insertion slot.
+    private static let insertionProximityThreshold: CGFloat = 20
 
     // MARK: ViewController Lifecycle
 
@@ -153,7 +151,12 @@ final class BeadThreadingViewController: UIViewController {
             activeDrag.view.center = location
         }
 
-        stringView.setShowsInsertionSlot(insertionProximityRect.contains(location))
+        stringView.setShowsInsertionSlot(isNearString(location))
+    }
+
+    private func isNearString(_ locationInRoot: CGPoint) -> Bool {
+        let locationInString = stringView.convert(locationInRoot, from: view)
+        return stringView.distance(toStringFrom: locationInString) <= Self.insertionProximityThreshold
     }
 
     private func endDrag() {
