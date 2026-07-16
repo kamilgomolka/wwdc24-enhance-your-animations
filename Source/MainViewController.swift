@@ -135,6 +135,7 @@ class MainViewController: UIViewController {
         configuration.titleAlignment = .leading
         configuration.background = makeCardBackground(highlighted: false)
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 76, bottom: 18, trailing: 40)
+        configuration.titlePadding = 4.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
             var attributes = attributes
             attributes.font = .preferredFont(forTextStyle: .headline)
