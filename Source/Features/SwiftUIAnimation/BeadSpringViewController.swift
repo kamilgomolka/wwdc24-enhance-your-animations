@@ -22,8 +22,21 @@ final class BeadSpringViewController: UIViewController {
     // MARK: Properties
 
     private var selectedStyle: AnimationStyle = .spring
+    private var hasCenteredBead = false
 
-    private let bead = BeadView(color: .systemIndigo, diameter: 64)
+    private let bead = BeadView(color: .systemIndigo, systemImageName: "car", diameter: 64)
+
+    private let canvasView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemBackground
+        view.layer.cornerRadius = 24
+        view.layer.cornerCurve = .continuous
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.separator.cgColor
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private let hintLabel: UILabel = {
         let label = UILabel()
@@ -52,15 +65,16 @@ final class BeadSpringViewController: UIViewController {
         view.backgroundColor = .systemBackground
 
         setupControls()
+        setupCanvasView()
         setupBead()
         setupTapGesture()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if bead.center == .zero {
-            bead.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-        }
+        guard !hasCenteredBead, canvasView.bounds != .zero else { return }
+        bead.center = CGPoint(x: canvasView.bounds.midX, y: canvasView.bounds.midY)
+        hasCenteredBead = true
     }
 
     // MARK: View setup
@@ -78,20 +92,29 @@ final class BeadSpringViewController: UIViewController {
         hintLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
     }
 
+    private func setupCanvasView() {
+        view.addSubview(canvasView)
+
+        canvasView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        canvasView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        canvasView.topAnchor.constraint(equalTo: styleControl.bottomAnchor, constant: 16).isActive = true
+        canvasView.bottomAnchor.constraint(equalTo: hintLabel.topAnchor, constant: -16).isActive = true
+    }
+
     private func setupBead() {
         bead.translatesAutoresizingMaskIntoConstraints = true
-        view.addSubview(bead)
+        canvasView.addSubview(bead)
     }
 
     private func setupTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap)
+        canvasView.addGestureRecognizer(tap)
     }
 
     // MARK: Actions
 
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
-        let location = gesture.location(in: view)
+        let location = gesture.location(in: canvasView)
         UIView.animate(selectedStyle.animation) {
             self.bead.center = location
         }

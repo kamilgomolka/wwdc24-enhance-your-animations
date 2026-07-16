@@ -23,16 +23,24 @@ final class BeadView: UIView {
         return label
     }()
 
+    private let symbolImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
     var color: UIColor {
         didSet {
             backgroundColor = color
             symbolLabel.textColor = Self.contrastingTextColor(for: color)
+            symbolImageView.tintColor = Self.contrastingTextColor(for: color)
         }
     }
 
     // MARK: Initialization
 
-    init(color: UIColor, symbol: String = "", diameter: CGFloat) {
+    init(color: UIColor, symbol: String = "", systemImageName: String? = nil, diameter: CGFloat) {
         self.color = color
         super.init(frame: CGRect(x: 0, y: 0, width: diameter, height: diameter))
         translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +59,15 @@ final class BeadView: UIView {
         addSubview(symbolLabel)
         symbolLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         symbolLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        if let systemImageName {
+            let configuration = UIImage.SymbolConfiguration(pointSize: diameter * 0.42, weight: .semibold)
+            symbolImageView.image = UIImage(systemName: systemImageName, withConfiguration: configuration)
+            symbolImageView.tintColor = Self.contrastingTextColor(for: color)
+            addSubview(symbolImageView)
+            symbolImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            symbolImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        }
     }
 
     required init?(coder: NSCoder) {
