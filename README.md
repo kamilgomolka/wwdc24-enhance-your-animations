@@ -47,10 +47,14 @@ Source/
 
 - Xcode with the iOS 26 SDK
 - Swift 6 (strict concurrency)
-- iOS 18+ deployment target (project targets iOS 26.0)
+- iOS 26.0+ deployment target
 
 ## Running
 
-Open `WWDC24-EnahanceYourAnimations.xcodeproj`, select the `NewAppBoilerplateUIKit` scheme, and run on a
+Open `WWDC24-EnahanceYourAnimations.xcodeproj`, select the `WWDC24-EnahanceYourAnimations` scheme, and run on a
 simulator or device. Animations in the session video are shown at half speed; enable Slow Animations
 (Simulator > Debug > Slow Animations, or Cmd-T) to inspect them more closely.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
