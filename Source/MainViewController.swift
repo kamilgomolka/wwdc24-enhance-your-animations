@@ -1,7 +1,41 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
+    private enum Demo: CaseIterable {
+        case zoomTransition
+        case swiftUIAnimation
+        case representables
+        case continuousVelocity
+
+        var title: String {
+            switch self {
+            case .zoomTransition: "Zoom Transition"
+            case .swiftUIAnimation: "SwiftUI Animation on UIView"
+            case .representables: "Animating Representables"
+            case .continuousVelocity: "Gesture Continuous Velocity"
+            }
+        }
+
+        var subtitle: String {
+            switch self {
+            case .zoomTransition: "Tap a bracelet to zoom into its editor"
+            case .swiftUIAnimation: "Drive UIView springs with SwiftUI animations"
+            case .representables: "Bridge SwiftUI animations into a UIView via context.animate"
+            case .continuousVelocity: "Fling a bead and preserve gesture velocity"
+            }
+        }
+
+        func makeViewController() -> UIViewController {
+            switch self {
+            case .zoomTransition: BraceletGalleryViewController()
+            case .swiftUIAnimation: BeadSpringViewController()
+            case .representables: RepresentableAnimationViewController()
+            case .continuousVelocity: BeadFlingViewController()
+            }
+        }
+    }
+
     // MARK: Properties
     
     private var scrollView: UIScrollView = {
@@ -32,17 +66,12 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var launchTestFeatureButton: UIButton = makeButton(
-        title: "Launch Test Feature",
-        action: { [weak self] in self?.pushTestFeatureViewController() }
-    )
-    
     // MARK: ViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Boilerplate app"        
+        title = "Enhance Your UI Animations"
         view.backgroundColor = .systemBackground
         
         addSubviews()
@@ -55,7 +84,9 @@ class MainViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(launchTestFeatureButton)
+        for demo in Demo.allCases {
+            stackView.addArrangedSubview(makeButton(for: demo))
+        }
     }
     
     private func createConstraints() {
@@ -78,17 +109,21 @@ class MainViewController: UIViewController {
     
     // MARK: Factories
     
-    private func makeButton(title: String, action: @escaping () -> Void) -> UIButton {
+    private func makeButton(for demo: Demo) -> UIButton {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = title
-        
-        let button = UIButton(configuration: configuration, primaryAction: UIAction { _ in action() })
-        return button
+        configuration.title = demo.title
+        configuration.subtitle = demo.subtitle
+        configuration.titleAlignment = .leading
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+
+        return UIButton(configuration: configuration, primaryAction: UIAction { [weak self] _ in
+            self?.present(demo)
+        })
     }
     
     // MARK: Actions
     
-    private func pushTestFeatureViewController() {
-        navigationController?.pushViewController(TestFeatureViewController(), animated: true)
+    private func present(_ demo: Demo) {
+        navigationController?.pushViewController(demo.makeViewController(), animated: true)
     }
 }
