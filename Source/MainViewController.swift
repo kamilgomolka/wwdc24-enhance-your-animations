@@ -5,14 +5,12 @@ class MainViewController: UIViewController {
     private enum Demo: CaseIterable {
         case zoomTransition
         case swiftUIAnimation
-        case representables
         case continuousVelocity
 
         var title: String {
             switch self {
             case .zoomTransition: "Zoom Transition"
             case .swiftUIAnimation: "SwiftUI Animation on UIView"
-            case .representables: "Animating Representables"
             case .continuousVelocity: "Gesture Continuous Velocity"
             }
         }
@@ -21,7 +19,6 @@ class MainViewController: UIViewController {
             switch self {
             case .zoomTransition: "Tap a bracelet to zoom into its editor"
             case .swiftUIAnimation: "Drive UIView springs with SwiftUI animations"
-            case .representables: "Bridge SwiftUI animations into a UIView via context.animate"
             case .continuousVelocity: "Fling a bead and preserve gesture velocity"
             }
         }
@@ -30,7 +27,6 @@ class MainViewController: UIViewController {
             switch self {
             case .zoomTransition: BraceletGalleryViewController()
             case .swiftUIAnimation: BeadSpringViewController()
-            case .representables: RepresentableAnimationViewController()
             case .continuousVelocity: BeadFlingViewController()
             }
         }
@@ -39,7 +35,6 @@ class MainViewController: UIViewController {
             switch self {
             case .zoomTransition: "arrow.up.left.and.arrow.down.right"
             case .swiftUIAnimation: "wand.and.stars"
-            case .representables: "shippingbox.fill"
             case .continuousVelocity: "hand.draw.fill"
             }
         }
@@ -48,7 +43,6 @@ class MainViewController: UIViewController {
             switch self {
             case .zoomTransition: .systemIndigo
             case .swiftUIAnimation: .systemPink
-            case .representables: .systemTeal
             case .continuousVelocity: .systemOrange
             }
         }
