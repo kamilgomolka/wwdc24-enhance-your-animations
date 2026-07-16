@@ -13,8 +13,8 @@ final class BeadThreadingViewController: UIViewController {
 
     private var activeDrag: ActiveDrag?
 
-    private let stringView = ThreadedBraceletView(beadDiameter: 48)
-    private let trayView = BeadTrayView(beadDiameter: 40)
+    private let stringView = ThreadedBraceletView(beadDiameter: 44)
+    private let trayView = BeadTrayView(beadDiameter: 44)
 
     private let trayContainerView: UIView = {
         let view = UIView()
@@ -57,8 +57,8 @@ final class BeadThreadingViewController: UIViewController {
         )
 
         setupStringView()
-        setupHint()
         setupTray()
+        setupHint()
         resetDemo()
     }
 
@@ -69,14 +69,7 @@ final class BeadThreadingViewController: UIViewController {
         stringView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
         stringView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         stringView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
-        stringView.heightAnchor.constraint(equalToConstant: 160).isActive = true
-    }
-
-    private func setupHint() {
-        view.addSubview(hintLabel)
-        hintLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
-        hintLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-        hintLabel.topAnchor.constraint(equalTo: stringView.bottomAnchor, constant: 24).isActive = true
+        stringView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
     }
 
     private func setupTray() {
@@ -85,13 +78,20 @@ final class BeadThreadingViewController: UIViewController {
 
         trayContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
         trayContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        trayContainerView.topAnchor.constraint(equalTo: hintLabel.bottomAnchor, constant: 24).isActive = true
         trayContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
+        trayContainerView.heightAnchor.constraint(equalToConstant: 44 + 16 + 16).isActive = true
 
         trayView.leadingAnchor.constraint(equalTo: trayContainerView.leadingAnchor, constant: 12).isActive = true
         trayView.trailingAnchor.constraint(equalTo: trayContainerView.trailingAnchor, constant: -12).isActive = true
         trayView.topAnchor.constraint(equalTo: trayContainerView.topAnchor, constant: 12).isActive = true
         trayView.bottomAnchor.constraint(equalTo: trayContainerView.bottomAnchor, constant: -12).isActive = true
+    }
+
+    private func setupHint() {
+        view.addSubview(hintLabel)
+        hintLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        hintLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        hintLabel.bottomAnchor.constraint(equalTo: trayContainerView.topAnchor, constant: -24).isActive = true
     }
 
     // MARK: Actions
@@ -189,14 +189,14 @@ final class BeadThreadingViewController: UIViewController {
 
     private func updateHintLabel() {
         hintLabel.text = trayView.beads.isEmpty
-            ? "All beads threaded — tap reset to try again"
-            : "Drag a bead near the string to make room and thread it"
+            ? "All beads threaded!\nTap reset to try again."
+            : "Drag a bead near the string to make room and thread it."
     }
 
     private static func makeBeadPools() -> (threaded: [BraceletBead], tray: [BraceletBead]) {
         let pool = Bracelet.samples.flatMap(\.beads).shuffled()
-        let threaded = Array(pool.prefix(5))
-        let tray = Array(pool.dropFirst(5).prefix(6))
+        let threaded = Array(pool.prefix(3))
+        let tray = Array(pool.dropFirst(3).prefix(6))
         return (threaded, tray)
     }
 }
