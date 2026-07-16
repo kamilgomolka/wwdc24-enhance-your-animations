@@ -8,17 +8,9 @@
 
 /* Begin PBXFileReference section */
 		8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC24-EnahanceYourAnimations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC3CE70300907AF00D09B94 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8EC3CE71300907AF00D09B94 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8EC3CDA83007E6B600D09B94 /* Source */ = {
@@ -28,9 +20,6 @@
 		};
 		8EC3CDC03007E90C00D09B94 /* Supporting files */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				8EC3CDC13007E91D00D09B94 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */,
-			);
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
@@ -52,6 +41,8 @@
 			children = (
 				8EC3CDA83007E6B600D09B94 /* Source */,
 				8EC3CDC03007E90C00D09B94 /* Supporting files */,
+				8EC3CE70300907AF00D09B94 /* LICENSE */,
+				8EC3CE71300907AF00D09B94 /* README.md */,
 				8EC3CDA73007E6B600D09B94 /* Products */,
 			);
 			sourceTree = "<group>";
