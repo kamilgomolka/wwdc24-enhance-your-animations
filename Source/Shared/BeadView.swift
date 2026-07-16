@@ -16,13 +16,23 @@ final class BeadView: UIView {
         return layer
     }()
 
+    private let symbolLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     var color: UIColor {
-        didSet { backgroundColor = color }
+        didSet {
+            backgroundColor = color
+            symbolLabel.textColor = Self.contrastingTextColor(for: color)
+        }
     }
 
     // MARK: Initialization
 
-    init(color: UIColor, diameter: CGFloat) {
+    init(color: UIColor, symbol: String = "", diameter: CGFloat) {
         self.color = color
         super.init(frame: CGRect(x: 0, y: 0, width: diameter, height: diameter))
         translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +44,13 @@ final class BeadView: UIView {
         layer.shadowOffset = CGSize(width: 0, height: 3)
         widthAnchor.constraint(equalToConstant: diameter).isActive = true
         heightAnchor.constraint(equalToConstant: diameter).isActive = true
+
+        symbolLabel.text = symbol
+        symbolLabel.font = .systemFont(ofSize: diameter * 0.42, weight: .semibold)
+        symbolLabel.textColor = Self.contrastingTextColor(for: color)
+        addSubview(symbolLabel)
+        symbolLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        symbolLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
 
     required init?(coder: NSCoder) {
@@ -47,5 +64,19 @@ final class BeadView: UIView {
         layer.cornerRadius = bounds.width / 2
         highlightLayer.frame = bounds
         highlightLayer.cornerRadius = bounds.width / 2
+    }
+
+    // MARK: Private functions
+
+    private static func contrastingTextColor(for color: UIColor) -> UIColor {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        color.resolvedColor(with: UITraitCollection(userInterfaceStyle: .light))
+            .getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        let luminance = 0.299 * red + 0.587 * green + 0.114 * blue
+        return luminance > 0.6 ? .black : .white
     }
 }

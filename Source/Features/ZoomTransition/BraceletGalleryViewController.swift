@@ -24,10 +24,21 @@ final class BraceletGalleryViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Zoom Transition"
+        navigationItem.largeTitleDisplayMode = .always
         view.backgroundColor = .systemGroupedBackground
 
         setupCollectionView()
         applySnapshot()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: View setup
@@ -45,20 +56,21 @@ final class BraceletGalleryViewController: UIViewController {
     private func makeLayout() -> UICollectionViewLayout {
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
+                widthDimension: .fractionalWidth(0.5),
                 heightDimension: .fractionalHeight(1)
             )
         )
-        let group = NSCollectionLayoutGroup.vertical(
+        let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(140)
+                heightDimension: .fractionalWidth(0.5)
             ),
-            subitems: [item]
+            subitems: [item, item]
         )
+        group.interItemSpacing = .fixed(16)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16)
         return UICollectionViewCompositionalLayout(section: section)
     }
 
