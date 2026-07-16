@@ -134,7 +134,10 @@ class MainViewController: UIViewController {
         configuration.subtitle = demo.subtitle
         configuration.titleAlignment = .leading
         configuration.background = makeCardBackground(highlighted: false)
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 76, bottom: 18, trailing: 40)
+        configuration.image = makeIconImage(for: demo)
+        configuration.imagePlacement = .leading
+        configuration.imagePadding = 16
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 40)
         configuration.titlePadding = 4.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { attributes in
             var attributes = attributes
@@ -152,6 +155,7 @@ class MainViewController: UIViewController {
         let button = UIButton(configuration: configuration, primaryAction: UIAction { [weak self] _ in
             self?.present(demo)
         })
+        button.contentHorizontalAlignment = .leading
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.05
         button.layer.shadowRadius = 10.0
@@ -161,7 +165,7 @@ class MainViewController: UIViewController {
             button.configuration?.background = self.makeCardBackground(highlighted: button.isHighlighted)
         }
 
-        addAccessories(to: button, for: demo)
+        addDisclosureIndicator(to: button)
         return button
     }
     
@@ -174,50 +178,39 @@ class MainViewController: UIViewController {
         return background
     }
     
-    private func makeIconBadge(for demo: Demo) -> UIView {
-        let badge = UIView()
-        badge.backgroundColor = demo.accentColor
-        badge.layer.cornerRadius = 12.0
-        badge.layer.cornerCurve = .continuous
-        badge.isUserInteractionEnabled = false
-        badge.translatesAutoresizingMaskIntoConstraints = false
-        badge.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-        badge.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+    private func makeIconImage(for demo: Demo) -> UIImage {
+        let badgeSize = CGSize(width: 44.0, height: 44.0)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 19.0, weight: .semibold)
+        let symbol = UIImage(systemName: demo.iconSystemName, withConfiguration: symbolConfiguration)?
+            .withTintColor(.white, renderingMode: .alwaysOriginal)
 
-        let imageView = UIImageView(image: UIImage(systemName: demo.iconSystemName))
-        imageView.tintColor = .white
-        imageView.contentMode = .scaleAspectFit
-        imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 19.0, weight: .semibold)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return UIGraphicsImageRenderer(size: badgeSize).image { _ in
+            let backgroundPath = UIBezierPath(
+                roundedRect: CGRect(origin: .zero, size: badgeSize),
+                cornerRadius: 12.0
+            )
+            demo.accentColor.setFill()
+            backgroundPath.fill()
 
-        badge.addSubview(imageView)
-        imageView.centerXAnchor.constraint(equalTo: badge.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: badge.centerYAnchor).isActive = true
-
-        return badge
+            guard let symbol else { return }
+            let origin = CGPoint(
+                x: (badgeSize.width - symbol.size.width) / 2.0,
+                y: (badgeSize.height - symbol.size.height) / 2.0
+            )
+            symbol.draw(at: origin)
+        }
     }
     
-    private func makeDisclosureIndicator() -> UIImageView {
+    private func addDisclosureIndicator(to button: UIButton) {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         imageView.tintColor = .tertiaryLabel
         imageView.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 14.0, weight: .semibold)
         imageView.isUserInteractionEnabled = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }
-    
-    private func addAccessories(to button: UIButton, for demo: Demo) {
-        let iconBadge = makeIconBadge(for: demo)
-        let disclosureIndicator = makeDisclosureIndicator()
 
-        button.addSubview(iconBadge)
-        button.addSubview(disclosureIndicator)
-
-        iconBadge.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 16.0).isActive = true
-        iconBadge.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
-
-        disclosureIndicator.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -16.0).isActive = true
-        disclosureIndicator.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
+        button.addSubview(imageView)
+        imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -16.0).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
     }
     
     // MARK: Actions
