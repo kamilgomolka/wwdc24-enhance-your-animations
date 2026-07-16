@@ -6,12 +6,14 @@ class MainViewController: UIViewController {
         case zoomTransition
         case swiftUIAnimation
         case continuousVelocity
+        case beadThreading
 
         var title: String {
             switch self {
             case .zoomTransition: "Zoom Transition"
             case .swiftUIAnimation: "SwiftUI Animation on UIView"
             case .continuousVelocity: "Gesture Continuous Velocity"
+            case .beadThreading: "Bead Threading"
             }
         }
 
@@ -20,6 +22,7 @@ class MainViewController: UIViewController {
             case .zoomTransition: "Tap a bracelet to zoom into its editor"
             case .swiftUIAnimation: "Drive UIView springs with SwiftUI animations"
             case .continuousVelocity: "Fling a bead and preserve gesture velocity"
+            case .beadThreading: "Drag a bead near the string to make room and thread it"
             }
         }
 
@@ -28,6 +31,7 @@ class MainViewController: UIViewController {
             case .zoomTransition: BraceletGalleryViewController()
             case .swiftUIAnimation: BeadSpringViewController()
             case .continuousVelocity: BeadFlingViewController()
+            case .beadThreading: BeadThreadingViewController()
             }
         }
 
@@ -36,6 +40,7 @@ class MainViewController: UIViewController {
             case .zoomTransition: "arrow.up.left.and.arrow.down.right"
             case .swiftUIAnimation: "wand.and.stars"
             case .continuousVelocity: "hand.draw.fill"
+            case .beadThreading: "circle.grid.3x3.fill"
             }
         }
 
@@ -44,6 +49,7 @@ class MainViewController: UIViewController {
             case .zoomTransition: .systemIndigo
             case .swiftUIAnimation: .systemPink
             case .continuousVelocity: .systemOrange
+            case .beadThreading: .systemPurple
             }
         }
     }

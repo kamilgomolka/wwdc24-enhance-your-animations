@@ -14,6 +14,7 @@ bracelets and beads.
 | Zoom Transition | Tap a bracelet cell to zoom into its detail screen; the transition is interactive. | `UIViewController.preferredTransition = .zoom { context in ... }` |
 | SwiftUI Animation on UIView | Tap to fling a bead across the screen using a chosen SwiftUI animation. | `UIView.animate(_ animation: SwiftUI.Animation, changes:)` |
 | Gesture Continuous Velocity | Drag and fling a bead; the release preserves the gesture's velocity. | `.interactiveSpring` during the gesture, `.spring` on release, via `UIView.animate(_:changes:)` |
+| Bead Threading | Drag a bead from a tray toward the bracelet string; nearby beads spring open a slot at the end, signaling where it will land. | Same `.interactiveSpring`/`.spring` pair, coordinating a multi-view spring reflow across two custom views |
 
 All APIs require iOS 18 or later.
 
@@ -33,6 +34,7 @@ Source/
     ZoomTransition/                 Demo 1
     SwiftUIAnimation/               Demo 2
     GestureVelocity/                Demo 3
+    BeadThreading/                  Demo 4
 ```
 
 ## Notes on the APIs
