@@ -5,7 +5,21 @@ final class BeadFlingViewController: UIViewController {
 
     // MARK: Properties
 
-    private let bead = BeadView(color: .systemPink, diameter: 72)
+    private var hasPositionedBead = false
+
+    private let bead = BeadView(color: .systemTeal, systemImageName: "paperplane.fill", diameter: 72)
+
+    private let canvasView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemBackground
+        view.layer.cornerRadius = 24
+        view.layer.cornerCurve = .continuous
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.separator.cgColor
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private let braceletEndMarker: UIView = {
         let view = UIView()
@@ -29,11 +43,11 @@ final class BeadFlingViewController: UIViewController {
     }()
 
     private var braceletEnd: CGPoint {
-        CGPoint(x: view.bounds.midX, y: view.safeAreaInsets.top + 120)
+        CGPoint(x: canvasView.bounds.midX, y: canvasView.bounds.minY + 120)
     }
 
     private var beadHome: CGPoint {
-        CGPoint(x: view.bounds.midX, y: view.bounds.maxY - view.safeAreaInsets.bottom - 140)
+        CGPoint(x: canvasView.bounds.midX, y: canvasView.bounds.maxY - 140)
     }
 
     // MARK: ViewController Lifecycle
@@ -48,27 +62,20 @@ final class BeadFlingViewController: UIViewController {
             primaryAction: UIAction { [weak self] _ in self?.resetBead() }
         )
 
-        setupMarker()
         setupHint()
+        setupCanvasView()
+        setupMarker()
         setupBead()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if bead.center == .zero {
-            bead.center = beadHome
-        }
+        guard !hasPositionedBead, canvasView.bounds != .zero else { return }
+        bead.center = beadHome
+        hasPositionedBead = true
     }
 
     // MARK: View setup
-
-    private func setupMarker() {
-        view.addSubview(braceletEndMarker)
-        braceletEndMarker.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        braceletEndMarker.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        braceletEndMarker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        braceletEndMarker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
-    }
 
     private func setupHint() {
         view.addSubview(hintLabel)
@@ -77,9 +84,26 @@ final class BeadFlingViewController: UIViewController {
         hintLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
     }
 
+    private func setupCanvasView() {
+        view.addSubview(canvasView)
+
+        canvasView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        canvasView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        canvasView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        canvasView.bottomAnchor.constraint(equalTo: hintLabel.topAnchor, constant: -16).isActive = true
+    }
+
+    private func setupMarker() {
+        canvasView.addSubview(braceletEndMarker)
+        braceletEndMarker.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        braceletEndMarker.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        braceletEndMarker.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor).isActive = true
+        braceletEndMarker.topAnchor.constraint(equalTo: canvasView.topAnchor, constant: 80).isActive = true
+    }
+
     private func setupBead() {
         bead.translatesAutoresizingMaskIntoConstraints = true
-        view.addSubview(bead)
+        canvasView.addSubview(bead)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         bead.addGestureRecognizer(pan)
     }
@@ -87,7 +111,7 @@ final class BeadFlingViewController: UIViewController {
     // MARK: Actions
 
     @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
-        let location = gesture.location(in: view)
+        let location = gesture.location(in: canvasView)
 
         switch gesture.state {
         case .changed:
