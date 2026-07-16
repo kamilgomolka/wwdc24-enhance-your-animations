@@ -58,7 +58,7 @@ final class ThreadedBraceletView: UIView {
         guard showsInsertionSlot != shows else { return }
         showsInsertionSlot = shows
         UIView.animate(.spring) {
-            self.layoutBeads()
+            self.layoutBeads(animatingString: true)
         }
     }
 
@@ -89,7 +89,11 @@ final class ThreadedBraceletView: UIView {
 
     // MARK: Private functions
 
-    private func layoutBeads() {
+    /// - Parameter animatingString: `UIView.animate(_:changes:)` drives its SwiftUI `Animation`
+    ///   by interpolating animatable `UIView` properties (like `center`, used for the beads
+    ///   below); it doesn't touch arbitrary `CALayer` properties. `stringLayer.path` needs its
+    ///   own explicit Core Animation to visually keep up with the beads while a slot opens/closes.
+    private func layoutBeads(animatingString: Bool = false) {
         let slotCount = beads.count + (showsInsertionSlot ? 1 : 0)
         let centers = slotCenters(count: slotCount)
         for (beadView, center) in zip(beadViews, centers) {
@@ -98,7 +102,27 @@ final class ThreadedBraceletView: UIView {
 
         currentStringPolyline = polylinePoints(through: centers)
         stringLayer.frame = bounds
-        stringLayer.path = stringPath(through: currentStringPolyline).cgPath
+        let path = stringPath(through: currentStringPolyline).cgPath
+        if animatingString {
+            animateStringPath(to: path)
+        } else {
+            stringLayer.path = path
+        }
+    }
+
+    /// Approximates SwiftUI's `.spring` timing/bounce so the string visually settles in sync
+    /// with the beads, which are already driven by that same animation via `UIView.animate`.
+    private func animateStringPath(to path: CGPath) {
+        let animation = CASpringAnimation(keyPath: "path")
+        animation.fromValue = stringLayer.path
+        animation.toValue = path
+        animation.mass = 1
+        animation.stiffness = 158
+        animation.damping = 21
+        animation.initialVelocity = 0
+        animation.duration = animation.settlingDuration
+        stringLayer.add(animation, forKey: "stringPath")
+        stringLayer.path = path
     }
 
     private func slotCenters(count: Int) -> [CGPoint] {
