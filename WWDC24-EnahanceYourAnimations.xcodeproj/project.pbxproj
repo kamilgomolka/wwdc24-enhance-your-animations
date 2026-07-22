@@ -12,6 +12,16 @@
 		8EC3CE71300907AF00D09B94 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8EA55CCE3011515E00B1CDE1 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8EC3CDA83007E6B600D09B94 /* Source */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -20,6 +30,9 @@
 		};
 		8EC3CDC03007E90C00D09B94 /* Supporting files */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8EA55CCE3011515E00B1CDE1 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */,
+			);
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
@@ -157,7 +170,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamilgomolka.testapp1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kamilgomolka.wwdc24-enhanceyouranimations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -191,7 +204,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamilgomolka.testapp1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kamilgomolka.wwdc24-enhanceyouranimations";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
