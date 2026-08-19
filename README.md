@@ -26,6 +26,12 @@ https://github.com/user-attachments/assets/399831a4-96c2-41ac-b014-b1671271ee26
 
 https://github.com/user-attachments/assets/04d655ce-d150-4da9-8bab-ae39a9ea9c66
 
+## Agentic Coding (Built with AI)
+
+This repository serves not only as a UI demo, but also as an experiment in AI-assisted development. 
+
+The entire codebase was built using [Cursor](https://cursor.com/) and an agentic workflow (**Plan > Review > Implement > Review**).
+
 ## Architecture
 
 - Plain, programmatic UIKit (no Storyboards/XIBs except `LaunchScreen.storyboard`). One `UIViewController`
