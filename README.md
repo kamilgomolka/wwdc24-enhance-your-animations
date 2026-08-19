@@ -1,4 +1,4 @@
-# Enhance Your UI Animations and Transitions
+# WWDC24 - Enhance Your UI Animations and Transitions
 
 A small UIKit demo app exploring the animation and transition APIs introduced in the WWDC24 session
 [Enhance your UI animations and transitions](https://developer.apple.com/videos/play/wwdc2024/10145/).
