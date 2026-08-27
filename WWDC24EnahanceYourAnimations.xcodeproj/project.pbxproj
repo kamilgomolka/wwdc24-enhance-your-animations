@@ -7,39 +7,36 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC24-EnahanceYourAnimations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EC3CE70300907AF00D09B94 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		8EC3CE71300907AF00D09B94 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8E0AB8F0303C493E00F59357 /* WWDC24EnahanceYourAnimations.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WWDC24EnahanceYourAnimations.xcconfig; sourceTree = "<group>"; };
+		8E48DB7D30384E7600DE107A /* WWDC24EnahanceYourAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC24EnahanceYourAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E8A18B43038522E001F4A1B /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8E8A18B53038522E001F4A1B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8EB30835303CE25700A08CEB /* Local.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = Local.xcconfig.example; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8EA55CCE3011515E00B1CDE1 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */ = {
+		8E8A18B330385171001F4A1B /* Exceptions for "WWDC24EnahanceYourAnimations" folder in "WWDC24EnahanceYourAnimations" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				SupportingFiles/Info.plist,
 			);
-			target = 8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */;
+			target = 8E48DB7C30384E7600DE107A /* WWDC24EnahanceYourAnimations */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8EC3CDA83007E6B600D09B94 /* Source */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Source;
-			sourceTree = "<group>";
-		};
-		8EC3CDC03007E90C00D09B94 /* Supporting files */ = {
+		8E48DB7F30384E7600DE107A /* WWDC24EnahanceYourAnimations */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8EA55CCE3011515E00B1CDE1 /* Exceptions for "Supporting files" folder in "WWDC24-EnahanceYourAnimations" target */,
+				8E8A18B330385171001F4A1B /* Exceptions for "WWDC24EnahanceYourAnimations" folder in "WWDC24EnahanceYourAnimations" target */,
 			);
-			path = "Supporting files";
+			path = WWDC24EnahanceYourAnimations;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8EC3CDA33007E6B600D09B94 /* Frameworks */ = {
+		8E48DB7A30384E7600DE107A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,21 +46,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8EC3CD9D3007E6B600D09B94 = {
+		8E0AB8F4303C493E00F59357 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				8EC3CDA83007E6B600D09B94 /* Source */,
-				8EC3CDC03007E90C00D09B94 /* Supporting files */,
-				8EC3CE70300907AF00D09B94 /* LICENSE */,
-				8EC3CE71300907AF00D09B94 /* README.md */,
-				8EC3CDA73007E6B600D09B94 /* Products */,
+				8EB30835303CE25700A08CEB /* Local.xcconfig.example */,
+				8E0AB8F0303C493E00F59357 /* WWDC24EnahanceYourAnimations.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		8E48DB7430384E7600DE107A = {
+			isa = PBXGroup;
+			children = (
+				8E0AB8F4303C493E00F59357 /* Config */,
+				8E48DB7F30384E7600DE107A /* WWDC24EnahanceYourAnimations */,
+				8E8A18B43038522E001F4A1B /* LICENSE */,
+				8E8A18B53038522E001F4A1B /* README.md */,
+				8E48DB7E30384E7600DE107A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8EC3CDA73007E6B600D09B94 /* Products */ = {
+		8E48DB7E30384E7600DE107A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */,
+				8E48DB7D30384E7600DE107A /* WWDC24EnahanceYourAnimations.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,65 +77,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */ = {
+		8E48DB7C30384E7600DE107A /* WWDC24EnahanceYourAnimations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "WWDC24-EnahanceYourAnimations" */;
+			buildConfigurationList = 8E48DBA630384E7700DE107A /* Build configuration list for PBXNativeTarget "WWDC24EnahanceYourAnimations" */;
 			buildPhases = (
-				8EC3CDA23007E6B600D09B94 /* Sources */,
-				8EC3CDA33007E6B600D09B94 /* Frameworks */,
-				8EC3CDA43007E6B600D09B94 /* Resources */,
+				8E48DB7930384E7600DE107A /* Sources */,
+				8E48DB7A30384E7600DE107A /* Frameworks */,
+				8E48DB7B30384E7600DE107A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8EC3CDA83007E6B600D09B94 /* Source */,
-				8EC3CDC03007E90C00D09B94 /* Supporting files */,
+				8E48DB7F30384E7600DE107A /* WWDC24EnahanceYourAnimations */,
 			);
-			name = "WWDC24-EnahanceYourAnimations";
+			name = WWDC24EnahanceYourAnimations;
 			packageProductDependencies = (
 			);
-			productName = NewAppBoilerplateUIKit;
-			productReference = 8EC3CDA63007E6B600D09B94 /* WWDC24-EnahanceYourAnimations.app */;
+			productName = WWDC24EnahanceYourAnimations;
+			productReference = 8E48DB7D30384E7600DE107A /* WWDC24EnahanceYourAnimations.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8EC3CD9E3007E6B600D09B94 /* Project object */ = {
+		8E48DB7530384E7600DE107A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
-					8EC3CDA53007E6B600D09B94 = {
+					8E48DB7C30384E7600DE107A = {
 						CreatedOnToolsVersion = 26.6;
 					};
 				};
 			};
-			buildConfigurationList = 8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "WWDC24-EnahanceYourAnimations" */;
+			buildConfigurationList = 8E48DB7830384E7600DE107A /* Build configuration list for PBXProject "WWDC24EnahanceYourAnimations" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 8EC3CD9D3007E6B600D09B94;
+			mainGroup = 8E48DB7430384E7600DE107A;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 8EC3CDA73007E6B600D09B94 /* Products */;
+			productRefGroup = 8E48DB7E30384E7600DE107A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EC3CDA53007E6B600D09B94 /* WWDC24-EnahanceYourAnimations */,
+				8E48DB7C30384E7600DE107A /* WWDC24EnahanceYourAnimations */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8EC3CDA43007E6B600D09B94 /* Resources */ = {
+		8E48DB7B30384E7600DE107A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,7 +144,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8EC3CDA23007E6B600D09B94 /* Sources */ = {
+		8E48DB7930384E7600DE107A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -149,75 +154,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8EC3CDBA3007E6B700D09B94 /* Debug */ = {
+		8E48DBA730384E7700DE107A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0AB8F0303C493E00F59357 /* WWDC24EnahanceYourAnimations.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Supporting files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Enhance your animations";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kamilgomolka.wwdc24-enhanceyouranimations";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		8EC3CDBB3007E6B700D09B94 /* Release */ = {
+		8E48DBA830384E7700DE107A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0AB8F0303C493E00F59357 /* WWDC24EnahanceYourAnimations.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Supporting files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Enhance your animations";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kamilgomolka.wwdc24-enhanceyouranimations";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		8EC3CDBC3007E6B700D09B94 /* Debug */ = {
+		8E48DBA930384E7700DE107A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -252,7 +211,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9G3V3Z24HF;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -270,18 +228,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		8EC3CDBD3007E6B700D09B94 /* Release */ = {
+		8E48DBAA30384E7700DE107A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -316,7 +273,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9G3V3Z24HF;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -328,12 +284,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -341,25 +296,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EC3CDA13007E6B600D09B94 /* Build configuration list for PBXProject "WWDC24-EnahanceYourAnimations" */ = {
+		8E48DB7830384E7600DE107A /* Build configuration list for PBXProject "WWDC24EnahanceYourAnimations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8EC3CDBC3007E6B700D09B94 /* Debug */,
-				8EC3CDBD3007E6B700D09B94 /* Release */,
+				8E48DBA930384E7700DE107A /* Debug */,
+				8E48DBAA30384E7700DE107A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EC3CDB93007E6B700D09B94 /* Build configuration list for PBXNativeTarget "WWDC24-EnahanceYourAnimations" */ = {
+		8E48DBA630384E7700DE107A /* Build configuration list for PBXNativeTarget "WWDC24EnahanceYourAnimations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8EC3CDBA3007E6B700D09B94 /* Debug */,
-				8EC3CDBB3007E6B700D09B94 /* Release */,
+				8E48DBA730384E7700DE107A /* Debug */,
+				8E48DBA830384E7700DE107A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8EC3CD9E3007E6B600D09B94 /* Project object */;
+	rootObject = 8E48DB7530384E7600DE107A /* Project object */;
 }
